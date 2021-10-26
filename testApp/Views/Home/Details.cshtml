@@ -1,0 +1,82 @@
+﻿@model testApp.Models.ViewModels.SaleVM
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+    th {
+        border: solid;
+        border-color: black;
+        border-width: 1px;
+        padding: 5px;
+    }
+    td {
+        padding:5px;
+        border:solid;
+        border-color:black;
+        border-width:1px;
+    }
+</style>
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-gradient-lightblue">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <h3 class="card-title" style="font-weight:bold">Sales</h3>
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-between">
+                    <span class="d-flex flex-column">
+                        <span class="pb-2" style="font-weight:bold">APC Company</span>
+                        <span>@Model.Sales.CustomerName</span>
+                        <span>@Model.Sales.Address</span>
+                        <span>@Model.Sales.Tel</span>
+                    </span>
+                    <span class="d-flex flex-column">
+                        <span class="pb-2" style="font-weight:bold">Sales Invoice</span>
+                        <span>Invoice No :  @Model.Sales.InvNo</span>
+                        <span>Date :@Model.Sales.SalesDate.ToShortDateString()</span>
+                        <span>Amount :@Model.SalesLines.Select(a => a.Total).Sum()</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="p-3" width="100%">
+                        <tr>
+                            <th>#</th>
+                            <th>Description</th>
+                            <th>Qty</th>
+                            <th>Unit Price</th>
+                            <th>Total</th>
+                        </tr>
+
+                        @{int i = 0;}
+                        @foreach (var item in Model.SalesLines)
+                        {
+                            i++;
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.UnitPrice</td>
+                                <td>@item.Total</td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

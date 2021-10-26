@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-gradient-lightblue">
+            <h3 class="card-title" style="font-weight:bold">Sales List</h3>
+        </div>
+        <div class="card-header">
+            <div class="card-tools">
+                <a type="button" class="btn btn-primary  text-sm" asp-action="Add">
+                    <i class="fas fa-plus"></i> &nbsp; Add Sales
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table id="tblData" class="table table-bordered table-hover" style="width:100%">
+                <thead>
+                    <tr class="table-info">
+                        <th>Invoice No </th>
+                        <th>Customer Name </th>
+                        <th>Adderss </th>
+                        <th>Tp No </th>
+                        <th style="text-align:center">Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/Custom/customerList.js"></script>
+}
